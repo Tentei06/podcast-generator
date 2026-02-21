@@ -1,14 +1,12 @@
-From ubuntu:latest
+FROM python:3.12-slim
 
-RUN apt-get update && apt-get install -y \
-  python3.10 \
-  python3-pip \
-  git 
+WORKDIR /app
 
-RUN pip3 install PyYAML
+RUN pip install --no-cache-dir pyyaml
 
-COPY feed.py /usr/bin/feed.py
-
+COPY feed.py /app/feed.py
 COPY entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
