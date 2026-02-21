@@ -4,7 +4,7 @@ set -e
 cd /github/workspace
 
 echo "Running feed generator..."
-python3 /usr/bin/feed.py
+python3 /app/feed.py
 
 echo "Configuring git..."
 git config --global user.name "${INPUT_NAME:-github-actions}"
